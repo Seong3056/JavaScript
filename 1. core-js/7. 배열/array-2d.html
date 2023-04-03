@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //우리반 학생들 4과목 점수 (국영수탐)
+        // var kim = [54,34,76,83];
+        // var lee =[43,46,23,76];
+        // var park = [73,69,98,42];
+
+        var outStudentScore = [
+            [54, 34, 76, 83],
+            [43, 46, 23, 76],
+            [73, 69, 98, 42]
+        ];
+        console.log(outStudentScore);
+        console.log(outStudentScoaare[1][0]);
+
+        //반평균
+        var total = 0;
+        for (var a of outStudentScore)
+            for (var b of a)
+                total += b;
+        var avg = total / (outStudentScore.length * outStudentScore[0].length);
+        console.log(Math.round(avg));
+    </script>
+</body>
+
+</html>
