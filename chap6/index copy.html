@@ -61,13 +61,13 @@ checkNumber에서 정답, 오답 여부 및 up/down 여부를 판단해서 논�
         //객체 디스트럭쳐링으로 뽑아 보세요~
         //사용자의 입력값을 객체에 추가
         //입력값 검증 함수를 호출.
-        let num = +prompt('숫자를 입력하세요 '+gameData.min+' ~ '+gameData.max);
-             
+        let num = +prompt('숫자를 입력하세요 '+min+' ~ '+max);
+        alert(`${num} ${min} ${max}`);
         return checkNumber(num);
         }
         //사용자의 입력값을 검증하는 함수
         function checkNumber(num) {
-                     
+            
             if(num == s_num){                
                 alert('정답입니다 !');
                 return true;
@@ -77,12 +77,13 @@ checkNumber에서 정답, 오답 여부 및 up/down 여부를 판단해서 논�
             else {
                 if(num > s_num){
                     alert(`${num} 보다는 낮습니다.`);                    
-                    gameData.max = Math.min(gameData.max , num-1);
+                    max = Math.min(max , num-1);
                 }
                 else if (num < s_num) {
                     alert(`${num} 보다는 큽니다.`);    
-                    gameData.min = Math.max(gameData.min , num+1);
+                    min = Math.max(min , num+1);
                 }
+                alert(`${num} ${min} ${max}`);
                 return false;
             }
         }
