@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +17,7 @@
             width: 100px;
             cursor: pointer;
         }
+
         #fruits li:hover {
             text-decoration: underline;
         }
@@ -24,10 +26,10 @@
             color: red;
             text-decoration: underline;
         }
-
     </style>
 
 </head>
+
 <body>
 
     <ul id="fruits">
@@ -45,7 +47,6 @@
     <button id="add">추가</button>
 
     <script>
-
         const $fruits = document.getElementById('fruits');
         const $msg = document.querySelector('.msg');
         const $liList = [...$fruits.children];
@@ -54,20 +55,20 @@
         function activate(e) {
 
             //이벤트 발생 타겟이 특정 요소인지를 검증.
-            if(!e.target.matches('#fruits > li')) {
+            if (!e.target.matches('#fruits > li')) {
                 // console.log('여기는 이벤트가 발생하면 안돼!');
                 return;
             }
-            
+
             //active 클래스를 클릭된 요소에 추가하고
             //기존에 active를 가지고 있던 요소에 클래스를 삭제.
-            for(let $li of $liList) {
+            for (let $li of $liList) {
                 /*
                 toggle 메서드의 두번째 매개값으로 논리값을 전달할 수 있는데 해당 논리값이 
                 true로 판명나면 지정한 클래스를 추가하고
                 false로 판명나면 지정한 클래스를 삭제합니다.
                 */
-               $li.classList.toggle('active', $li === e.target);
+                $li.classList.toggle('active', $li === e.target);
             }
 
             //메세지 영역에 이벤트가 발생된 과일 이름을 추가
@@ -75,12 +76,49 @@
             $msg.textContent = e.target.id;
         }
 
-
-
         //ul에 이벤트 등록
         $fruits.addEventListener('click', activate);
 
+        // 동적으로 과일추가
+        const $textBox = document.querySelector('.text-box');
+        const $btn = document.getElementById('add');
+
+        $btn.addEventListener('click', e => {
+            const $newLi = document.createElement('li'); // <li></li>
+            $newLi.textContent = $textBox.value; //<li>Mango</li>
+            $newLi.setAttribute('id', $textBox.value.toLowerCase()); //<li id="mango">Mango</li>
+            $fruits.appendChild($newLi);
+
+            $textBox.value = '';
+
+            // 새롭게 추가된 li에도 active 추가 대상여부를 확인하기위해 배열에 추가
+            $liList.push($newLi);
+        });
+
+        //입력창 안에서 엔터키를 입력하면 버튼클릭과 동일한 효과내기
+        $textBox.addEventListener('keydown',e =>{
+            if(e.keyCode === 13){
+                // click()은 요소를 직접 클릭한것과 동일한 효과를 준다.
+                // 클릭이벤트가 발생할 수 있도록 유도 ↑↑
+                $btn.click();
+            }
+        })
+
+
+
+
+        // $textBox.addEventListener('keydown', e => {
+        //     if (e.key === 'Enter') {
+        //         const $newLi = document.createElement('li'); // <li></li>
+        //         $newLi.textContent = $textBox.value; //<li>Mango</li>
+        //         $newLi.setAttribute('id', $textBox.value.toLowerCase()); //<li id="mango">Mango</li>
+        //         $fruits.appendChild($newLi);
+        //         $textBox.value = '';
+        //         $liList.push($newLi);
+        //     }
+        // })
     </script>
-    
+
 </body>
+
 </html>
