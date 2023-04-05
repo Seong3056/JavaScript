@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text">
+    <p class="msg"></p>
+
+    <script>
+        const $text = document.querySelector('input');
+        const $msg = document.querySelector('.msg')
+
+        
+        $text.addEventListener('keydown', e => {
+            console.log(e.key);
+            console.log('뭔키가 눌림');
+            if(e.keyCode == 13) {
+                $msg.textContent = e.target.value;
+                e.textContent = '';
+            }
+            else if(e.key === 'Escape') {
+                $msg.textContent = '';
+            }
+        });
+
+    </script>
+</body>
+</html>
