@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="checkbox" value="1"> 조항1
+    <input type="checkbox" value="2"> 조항2
+    <input type="checkbox" value="3"> 조항3
+    <input type="checkbox" value="4"> 조항4
+
+    <br>
+
+    ID: <input type="text" id="id">
+    기억하기 <input type="checkbox" id="remember">
+    <button id="check2">로그인</button>
+    <script>
+        const $box = document.querySelectorAll('input[type="checkbox" ]');
+        
+        console.log($box)
+        function event(e){
+            if(e.target.checked) alert(`동의하셨습니다.${e.target.value}`);
+        }
+            for(let n of [...$box]){
+                n.addEventListener('change',event);
+            }
+       
+        // for(let n of [...$box]){
+        //     n.addEventListener('change', e=>{                      
+        //     if(e.target.checked) alert(`동의하셨습니다.${e.target.value}`);
+        // })
+        // }
+        /*
+         2. 확인 버튼을 클릭했을 때
+        input 태그의 공백 여부, 체크 여부를 확인하세요.
+        */
+        const $id = document.getElementById('id');
+        const $remember = document.getElementById('remember');
+        const $btn = document.getElementById('check2');
+        $remember.removeEventListener('change', event);
+        console.log($box)
+        $btn.addEventListener('click', e =>{
+            
+            if(!$id.value) alert('아이디란은 공백일 수 없습니다!');
+            else{
+                if($remember.checked) {
+                    $id.style.background = 'skyblue';
+                    alert(`${$id.value}의 아이디를 기억합니다.`);
+                }
+                else {
+                    alert(`${$id.value}의 아이디를 기억하지 않습니다.`)
+                }
+            }
+        })
+    </script>
+   
+</body>
+</html>
+
+
+for( int i =0; i<$checkbox.length; i++)
