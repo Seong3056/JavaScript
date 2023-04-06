@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <th>교시</th>
+            <th>훈련과목</th>
+            <th>담당자</th>
+            <th>훈련 내용</th>
+        </thead>
+        <tbody class="todolist">
+            <tr class="list">
+                <td ><input type="text" size="3"></td>
+                <td><input type="text"></td>
+                <td><input type="text" size="3"></td>
+                <td><input type="text"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <button id="add5">5행 추가하기</button>
+    <button id="add1">1행 추가하기</button>
+
+    <script>
+        const $todolist = document.querySelector('.todolist');
+        const $add5 = document.getElementById('add5');
+        const $add1 = document.getElementById('add1');
+        const $list = $todolist.querySelector('.list')
+        
+        function add() {
+            
+            const $newLi = $list.cloneNode(true);           
+            // const $frag = document.createDocumentFragment();
+            const $li = $newLi.querySelectorAll('td');
+            for(let n of [...$li]){
+                n.value='';
+            }
+            $todolist.appendChild($newLi);
+          
+        }
+        $add1.onclick = () => {
+            add();
+        }
+        $add5.onclick = () => {
+            for(let i=0;i<5;i++){
+                add();
+            }
+        }
+        
+
+        
+    </script>
+</body>
+
+</html>

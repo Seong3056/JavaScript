@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .display{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="hider">텍스트숨기기</button>
+    <div id="text" class="display">안녕하세요!</div>
+
+    <script>
+        const $hider = document.getElementById('hider');
+        const $text = document.getElementById('text');
+
+        console.log($text.classList.contains('display'));
+        
+        $hider.addEventListener('click', ()=>{
+            $text.classList.toggle('display');
+           
+            if(!$text.classList.contains('display')){
+                $text.display = 'none'
+                
+                $hider.textContent = '텍스트보이기';
+            }
+            else if($text.classList.contains('display') ){
+                $text.display = 'inline';
+                
+                $hider.textContent = '텍스트숨기기';
+                
+                
+            }
+        })
+    </script>
+</body>
+</html>

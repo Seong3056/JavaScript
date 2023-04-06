@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            padding: 0;
+           `
+        }
+        ul li {
+            list-style: none;
+            position: relative;
+            
+        }
+        ul li:first-child{
+            display: none;
+        }
+        ul .del-btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(-50%);
+            width: 20px;
+            height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>할 일 목록 만들기</h2>
+
+    <div class="name-form">
+        <h3 class="name-title"></h3>
+        <input type="text" placeholder="이름을 입력하세요" class="name-input">
+        <button class="btn1">확인</button>
+    </div>
+    <div class="todo-form">
+        <input type="text" placeholder="당신의 할일을 적으세요" class="todo-input">
+        <button class="btn2">확인</button>
+    </div>
+    <ul class="todo-list">
+        <li><input type="checkbox" class="radio-btn" ></li>
+    </ul>
+    <script>
+        
+        const $nameF = document.querySelector('.name-form');
+        const $nameI = $nameF.querySelector('.name-input');
+        const $nameT = $nameF.querySelector('.name-title');
+        const $btn1 = document.querySelector('.btn1');
+
+        $btn1.onclick = () =>{
+            if(!$nameI.value) alert('이름을 입력하세요!');
+            else {
+                $nameT.textContent = $nameI.value;
+                
+                $nameF.removeChild($nameF.lastElementChild);
+                $nameF.removeChild($nameF.lastElementChild);
+            }
+            
+        }
+
+        const $todoF = document.querySelector('.todo-form');
+        const $todoL = document.querySelector('.todo-list');
+        const $todoI = $todoF.querySelector('.todo-input');
+        const $btn2 = document.querySelector('.btn2');
+        $btn2.onclick = () => {
+            console.log($todoL);
+            const $frag = document.createElement('li'); //li 엘리먼트 생성                       
+            $frag.textContent = $todoI.value;   //li에 input 값을 입력
+            $frag.insertAdjacentHTML("afterbegin",'<input>'); //li요소 시작뒤에 input 삽입
+            $frag.insertAdjacentHTML("beforeend",'<button class="del-btn">');
+
+            $frag.querySelector('input').setAttribute('type','checkbox'); //li안 input의 타입을 radio로 변경
+            $frag.querySelector('input').setAttribute('class','radio-btn');
+            $frag.querySelector('button').textContent = 'X';
+            $todoL.appendChild($frag);
+
+            
+        }
+
+        
+        $todoL.addEventListener('change', e => {
+            if(e.target.checked){
+                e.target.parentNode.style.textDecoration = 'line-through';                
+            }
+            else {
+                e.target.parentNode.style.textDecoration = 'none';
+            }
+            
+           
+        });
+        const $d_btn = document.querySelector('.del-btn');
+        $todoL.addEventListener('click', e => {
+            if(e.target.matches('li > button')){
+                $todoL.removeChild(e.target.parentNode);
+            }
+        })
+    </script>
+</body>
+</html>

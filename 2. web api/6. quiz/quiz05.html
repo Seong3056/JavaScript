@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .menu ul{
+            display: none;
+            list-style: none;
+            border: 1px solid orange;
+            width: 100px;
+            margin: 0;
+            margin-top: 20px;
+            margin-left: 20px;
+            padding: 10px;
+            
+        }
+        .menu> .title:hover {
+            text-decoration: underline green;
+            cursor: pointer;
+            
+        }
+        #lunches{
+            line-height: 1.2em;
+        }
+        .menu .title::before{
+            content: '▶';
+            color: green;
+        }
+        .open ul{
+            display: block;
+        }
+        .open .title::before{
+            content: '▼';
+            color: green;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="lunches"  class="menu ">
+        <span class="title">추천 점심 메뉴 (click me!)</span>
+        <ul class="list">
+            <li>짜장면</li>
+            <li>돈가스</li>
+            <li>김치찌개</li>
+            <li>제육덮밥</li>
+        </ul>
+    </div>
+    <script>
+        const $menu = document.querySelector('.menu');
+        const $lunch = document.getElementById('lunches');
+        const $list = $lunch.querySelector('.list');
+        
+        $lunch.addEventListener('click',e=>{
+            $lunch.classList.toggle('open');
+        })
+    </script>
+</body>
+</html>

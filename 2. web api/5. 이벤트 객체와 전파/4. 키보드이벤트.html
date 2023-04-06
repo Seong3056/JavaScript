@@ -20,7 +20,7 @@
             console.log(e.key);
             console.log('뭔키가 눌림');
             if(e.keyCode == 13) {
-                $msg.textContent = e.target.value;
+                $msg.textContent += e.target.value;
                 e.textContent = '';
             }
             else if(e.key === 'Escape') {

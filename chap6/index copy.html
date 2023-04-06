@@ -54,15 +54,14 @@ checkNumber에서 정답, 오답 여부 및 up/down 여부를 판단해서 논�
         // let countdown = gameData.countdown;
         // let min = gameData.min;
         // let max = gameData.max;
-        let {s_num,count,countdown,min,max} = gameData;
+        let {s_num,count,countdown,min,max} = {...gameData};
         
         function inputNumber() {
         //객체에서 min과 max의 값을 뽑아서 메세지를 완성.
         //객체 디스트럭쳐링으로 뽑아 보세요~
         //사용자의 입력값을 객체에 추가
         //입력값 검증 함수를 호출.
-        let num = +prompt('숫자를 입력하세요 '+min+' ~ '+max);
-        alert(`${num} ${min} ${max}`);
+        let num = +prompt('숫자를 입력하세요 '+min+' ~ '+max);        
         return checkNumber(num);
         }
         //사용자의 입력값을 검증하는 함수
@@ -78,6 +77,7 @@ checkNumber에서 정답, 오답 여부 및 up/down 여부를 판단해서 논�
                 if(num > s_num){
                     alert(`${num} 보다는 낮습니다.`);                    
                     max = Math.min(max , num-1);
+                    console.log(max>num);
                 }
                 else if (num < s_num) {
                     alert(`${num} 보다는 큽니다.`);    
