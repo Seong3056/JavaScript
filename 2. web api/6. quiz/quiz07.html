@@ -27,7 +27,7 @@
             <th>담당자</th>
             <th>훈련 내용</th>
         </thead>
-        <tbody class="todolist">
+        <tbody class="todoList">
             <tr class="list">
                 <td ><input type="text" size="3"></td>
                 <td><input type="text"></td>
@@ -41,10 +41,10 @@
     <button id="add1">1행 추가하기</button>
 
     <script>
-        const $todolist = document.querySelector('.todolist');
+        const $todoList = document.querySelector('.todoList');
         const $add5 = document.getElementById('add5');
         const $add1 = document.getElementById('add1');
-        const $list = $todolist.querySelector('.list')
+        const $list = $todoList.querySelector('.list')
         
         function add() {
             
@@ -54,7 +54,7 @@
             for(let n of [...$li]){
                 n.value='';
             }
-            $todolist.appendChild($newLi);
+            $todoList.appendChild($newLi);
           
         }
         $add1.onclick = () => {
