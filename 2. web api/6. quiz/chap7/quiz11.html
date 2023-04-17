@@ -61,13 +61,21 @@
         const $body = document.querySelector('tbody');
         
         $body.addEventListener('click', e => {
-            if(e.target.tagName == 'BUTTON'){
-                    const $tr = e.target.parentNode.parentNode;
-                    for(let t=0;t<4;t++){
-                        $tr.removeChild($tr.lastElementChild)
-                    }
+            // if(e.target.tagName == 'BUTTON'){
+            //     const $tr = e.target.parentNode.parentNode;
+                
+            //         for(let t=0;t<$tr.children.length;t++){
+            //             $tr.removeChild($tr.lastElementChild)
+            //         }
             
             
+        
+        if(!event.target.matches('button')){
+            return;
+        }
+        else {
+            // event.target.parentNode.parentNode.remove();
+            $body.removeChild(event.target.parentNode.parentNode);
         }
     })
     
